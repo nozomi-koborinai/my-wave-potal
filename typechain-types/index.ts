@@ -2,5 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { Lock } from "./Lock";
+export type { WavePortal } from "./WavePortal";
 export * as factories from "./factories";
 export { Lock__factory } from "./factories/Lock__factory";
+export { WavePortal__factory } from "./factories/WavePortal__factory";
