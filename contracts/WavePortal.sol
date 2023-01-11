@@ -15,6 +15,9 @@ contract WavePortal {
     uint256 totalWaves;
     /*
     * NewWaveイベントの作成
+    * param1:from:ユーザーのアドレス
+    * param2:timestamp:ユーザーがwaveしてきた時刻
+    * param3:message:ユーザーのメッセージ
     */
     event NewWave(address indexed from, uint256 timestamp, string message);
     /*
