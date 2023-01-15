@@ -25,13 +25,19 @@ import { ethers } from "hardhat";
 async function main() {
   const [deployer] = await ethers.getSigners();
   const accountBalance = await deployer.getBalance();
-  const waveContract = await ethers.getContractFactory("WavePortal");
-  const wavePortal = await waveContract.deploy();
 
   console.log("Deploying contracts with account: ", deployer.address);
   console.log("Account balance: ", accountBalance.toString());
-  console.log("Contract deployed to: ", wavePortal.address);
-  console.log("Contract deployed by: ", deployer.address);
+
+  const waveContractFactory = await ethers.getContractFactory("WavePortal");
+  /* コントラクトに資金を提供できるようにする */
+  const waveContract = await waveContractFactory.deploy({
+    value: ethers.utils.parseEther("0.001"),
+  });
+
+  await waveContract.deployed();
+
+  console.log("WavePortal address: ", waveContract.address);
 };
 
 async function runMain() {
